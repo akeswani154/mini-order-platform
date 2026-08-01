@@ -1,0 +1,36 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Download the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Install Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Step 3: Install project dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Step 4: Run Tests (Add when tests are available)
+      # - name: Run Tests
+      #   run: npm test
+
+      # Step 5: Build Application (Only if your project has a build script)
+      # - name: Build Application
+      #   run: npm run build
+
+
+      
