@@ -1,36 +1,35 @@
-name: CI/CD Pipeline
+name: Order Service CI/CD
 
 on:
   push:
     branches:
       - main
+    paths:
+      - "order-service/**"
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Download the repository
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # Step 2: Install Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
 
-      # Step 3: Install project dependencies
       - name: Install Dependencies
+        working-directory: ./order-service
         run: npm install
 
-      # Step 4: Run Tests (Add when tests are available)
+      # Uncomment when tests are added
       # - name: Run Tests
+      #   working-directory: ./order-service
       #   run: npm test
 
-      # Step 5: Build Application (Only if your project has a build script)
+      # Uncomment if you add a build script
       # - name: Build Application
+      #   working-directory: ./order-service
       #   run: npm run build
-
-
-      
